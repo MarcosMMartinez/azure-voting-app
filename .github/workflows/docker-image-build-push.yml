@@ -24,7 +24,7 @@ jobs:
           repository: ${{ secrets.REPO }}
           image: vote-app
           #git_access_token: ${{ secrets.git_access_token }}
-          #folder: src/docker
+          folder: /azure-vote/azure-vote
           dockerfile: /azure-vote/Dockerfile
           branch: main
 
