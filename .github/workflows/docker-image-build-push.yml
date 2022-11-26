@@ -1,0 +1,30 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: ACR build
+        id: acr
+        uses: azure/acr-build@v1
+        with:
+          service_principal: ${{ secrets.SP_ID }}
+          service_principal_password: ${{ secrets.SP_PASS }}
+          tenant: ${{ secrets.TENANT_ID }}
+          registry: ${{ secrets.AZ_REGISTRY }}
+          repository: ${{ secrets.REPO }}
+          image: vote-app
+          #git_access_token: ${{ secrets.git_access_token }}
+          #folder: src/docker
+          dockerfile: /azure-vote/Dockerfile
+          branch: main
+
