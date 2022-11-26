@@ -14,9 +14,9 @@ jobs:
 
     steps:
     - name: ACR build
-        id: acr
-        uses: azure/acr-build@v1
-        with:
+      id: acr
+      uses: azure/acr-build@v1
+      with:
           service_principal: ${{ secrets.SP_ID }}
           service_principal_password: ${{ secrets.SP_PASS }}
           tenant: ${{ secrets.TENANT_ID }}
